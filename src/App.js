@@ -10,6 +10,21 @@ const WeightTrackerApp = () => {
   const [notes, setNotes] = useState('');
   const [activeTab, setActiveTab] = useState('entry');
   const [notification, setNotification] = useState({ show: false, message: '', type: '' });
+  const [randomQuote, setRandomQuote] = useState('');
+
+  // 체중 관리 명언 목록
+  const weightLossQuotes = [
+    "오늘의 선택이 당신의 내일을 결정합니다.",
+    "체중 감량은 속도가 아닌 꾸준함이 중요합니다.",
+    "당신이 포기할 때, 그때가 성공 직전입니다.",
+    "한 번에 한 걸음씩, 매일 조금씩 나아가세요.",
+    "식습관을 바꾸면 몸이 바뀝니다.",
+    "쉬운 길은 결과도 쉽게 사라집니다.",
+    "건강한 몸은, 건강한 선택의 결과입니다.",
+    "오늘의 땀은 내일의 자신감입니다.",
+    "목표를 향해 나아가는 모든 날이 성공의 날입니다.",
+    "실패는 포기할 때만 찾아옵니다. 계속 도전하세요."
+  ];
 
   // 로컬 스토리지에서 데이터 불러오기
   useEffect(() => {
@@ -23,6 +38,10 @@ const WeightTrackerApp = () => {
     if (savedGoalWeight) {
       setGoalWeight(savedGoalWeight);
     }
+
+    // 랜덤 명언 선택
+    const randomIndex = Math.floor(Math.random() * weightLossQuotes.length);
+    setRandomQuote(weightLossQuotes[randomIndex]);
   }, []);
 
   // 데이터 저장
@@ -55,6 +74,10 @@ const WeightTrackerApp = () => {
       setWeight('');
       setNotes('');
       showNotification('체중이 성공적으로 기록되었습니다.');
+
+      // 새로운 랜덤 명언 선택
+      const randomIndex = Math.floor(Math.random() * weightLossQuotes.length);
+      setRandomQuote(weightLossQuotes[randomIndex]);
     } else {
       showNotification('유효한 체중을 입력해주세요.', 'error');
     }
@@ -193,6 +216,11 @@ const WeightTrackerApp = () => {
           >
             기록 저장
           </button>
+
+          {/* 동기부여 명언 */}
+          <div className="mt-6 p-3 bg-blue-50 rounded-lg border border-blue-100">
+            <p className="text-center text-blue-700 italic font-medium">"{randomQuote}"</p>
+          </div>
         </div>
       )}
 
