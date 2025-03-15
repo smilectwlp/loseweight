@@ -104,24 +104,12 @@ const WeightTrackerApp = () => {
     return Math.min(100, Math.max(0, (currentChange / totalChange * 100))).toFixed(1);
   };
 
-  // BMI 계산
-  const calculateBMI = (weight, height) => {
-    if (!weight || !height) return "-";
-    const bmi = (weight / ((height / 100) ** 2)).toFixed(1);
 
-    let status = "";
-    if (bmi < 18.5) status = "저체중";
-    else if (bmi < 23) status = "정상";
-    else if (bmi < 25) status = "과체중";
-    else if (bmi < 30) status = "비만";
-    else status = "고도비만";
-
-    return `${bmi} (${status})`;
-  };
 
   return (
     <div className="max-w-xl mx-auto p-4 bg-gray-50 rounded-lg shadow-md">
       <h1 className="text-2xl font-bold text-center mb-6 text-blue-600">체중 관리 앱</h1>
+      <div className="text-xs text-gray-500 text-center -mt-4 mb-4">버전1</div>
 
       {/* 알림 메시지 */}
       {notification.show && (
