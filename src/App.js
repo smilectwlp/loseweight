@@ -132,7 +132,7 @@ const WeightTrackerApp = () => {
   return (
     <div className="max-w-xl mx-auto p-4 bg-gray-50 rounded-lg shadow-md">
       <h1 className="text-2xl font-bold text-center mb-6 text-blue-600">체중 관리 앱</h1>
-      <div className="text-xs text-gray-500 text-center -mt-4 mb-4">버전1</div>
+      <div className="text-xs text-gray-500 text-center -mt-4 mb-4">버전2</div>
 
       {/* 알림 메시지 */}
       {notification.show && (
